@@ -10,6 +10,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'application'
 
 jar {
     baseName = 'jelly-gp-server'
@@ -32,4 +33,4 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.6'
 }
 
-task stage(dependsOn: ['clean', 'build', 'installApp'])
+task stage(dependsOn: ['clean', 'build', 'installDist'])
