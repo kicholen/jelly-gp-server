@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar  target/jelly-gp-server-0.1.0.jar
