@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar  target/jelly-gp-server-0.1.0.jar
+web: java -Dserver.port=$PORT -jar  build/libs/jelly-gp-server-0.1.0.jar
