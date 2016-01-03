@@ -1,12 +1,19 @@
-package jelly.model.path;
+package jelly.entity.path;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Path {
+@Entity
+public class Path implements Serializable {
 
-    List<PathPoint> points = new ArrayList<PathPoint>();
+    @Id
+    @GeneratedValue
     long id;
+
+    @OneToMany
+    List<PathPoint> points = new ArrayList<PathPoint>();
 
     public Path(long id) {
         this.id = id;

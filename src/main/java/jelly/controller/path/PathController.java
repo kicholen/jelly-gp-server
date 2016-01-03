@@ -1,6 +1,6 @@
 package jelly.controller.path;
 
-import jelly.model.path.Path;
+import jelly.entity.path.Path;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -12,6 +12,7 @@ public class PathController {
 
     @RequestMapping(value="/paths/{path}", method=RequestMethod.GET)
     public Path test(@PathVariable("path") long pathId) {
+
         return new Path(pathId);
     }
 }
