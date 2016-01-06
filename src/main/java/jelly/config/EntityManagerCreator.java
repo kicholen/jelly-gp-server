@@ -20,7 +20,9 @@ public class EntityManagerCreator implements ServletContextListener {
             Properties properties = new Properties();
             properties.setProperty("hibernate.connection.username", getUserInfo().split(":")[0]);
             properties.setProperty("hibernate.connection.password", getUserInfo().split(":")[1]);
-            properties.setProperty("hibernate.connection.url", "jdbc:postgresql://localhost:5432/");
+            if (isLocalUser()) {
+                properties.setProperty("hibernate.connection.url", "jdbc:postgresql://localhost:5432/");
+            }
 
             emf = Persistence.createEntityManagerFactory("jellyeditor.persistence.unit", properties);
         }
@@ -31,17 +33,16 @@ public class EntityManagerCreator implements ServletContextListener {
     // todo figure out why listener events are not called
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        Properties properties = new Properties();
-        properties.setProperty("hibernate.connection.username", getUserInfo().split(":")[0]);
-        properties.setProperty("hibernate.connection.password", getUserInfo().split(":")[1]);
-        properties.setProperty("hibernate.connection.url", "jdbc:postgresql://localhost:5432/");
-
-        emf = Persistence.createEntityManagerFactory("jellyeditor.persistence.unit", properties);
+        emf = Persistence.createEntityManagerFactory("jellyeditor.persistence.unit");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         emf.close();
+    }
+
+    static Boolean isLocalUser() {
+        return getUserInfo().split(":")[0].startsWith("post");
     }
 
     static String getUserInfo() {
