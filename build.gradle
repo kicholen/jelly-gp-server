@@ -28,6 +28,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.hibernate:hibernate-entitymanager:4.2.21.Final")
     compile("org.hibernate:hibernate-core:4.2.21.Final")
+    compile("org.hibernate:hibernate-c3p0:4.2.21.Final")
     compile("postgresql:postgresql:9.1-901-1.jdbc4")
     testCompile("junit:junit")
 }
