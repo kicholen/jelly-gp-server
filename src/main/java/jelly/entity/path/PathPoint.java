@@ -14,6 +14,10 @@ public class PathPoint implements Serializable {
     double x;
     double y;
 
+    public PathPoint() {
+        super();
+    }
+
     public PathPoint(double x, double y) {
         this.x = x;
         this.y = y;
