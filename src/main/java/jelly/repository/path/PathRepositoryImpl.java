@@ -16,6 +16,6 @@ public class PathRepositoryImpl extends AbstractRepository<Path> implements Path
 
     @Override
     public List<Path> findAll() {
-        return findAll(Path.FIND_ALL);
+        return query(Path.FIND_ALL);
     }
 }

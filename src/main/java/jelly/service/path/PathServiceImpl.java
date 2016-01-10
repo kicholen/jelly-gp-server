@@ -21,9 +21,7 @@ public class PathServiceImpl implements PathService {
 
     @Override
     public Path delete(long id) throws PathNotFound {
-        Path path = entity.findOne(id);
-        if (path == null)
-            throw new PathNotFound();
+        Path path = findById(id);
         entity.delete(id);
         return path;
     }
@@ -35,11 +33,16 @@ public class PathServiceImpl implements PathService {
 
     @Override
     public Path update(Path path) throws PathNotFound {
-        return entity.update(path);
+        Path savedPath = findById(path.getId());
+        entity.update(path);
+        return savedPath;
     }
 
     @Override
-    public Path findById(long id) {
+    public Path findById(long id) throws PathNotFound {
+        Path path = entity.findOne(id);
+        if (path == null)
+            throw new PathNotFound();
         return entity.findOne(id);
     }
 }

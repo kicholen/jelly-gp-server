@@ -26,9 +26,8 @@ public abstract class AbstractRepository<T extends Serializable> {
         }
     }
 
-    public List<T> findAll(String name) {
+    public List<T> query(String name) {
         EntityManager em = EntityManagerCreator.create();
-        EntityTransaction transaction = em.getTransaction();
         try {
             return em.createNamedQuery(name, clazz).getResultList();
         }

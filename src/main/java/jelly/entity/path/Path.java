@@ -16,7 +16,7 @@ public class Path implements Serializable {
     @GeneratedValue
     long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<PathPoint> points = new ArrayList<PathPoint>();
 
     public Path() {
@@ -25,6 +25,10 @@ public class Path implements Serializable {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(final long value) {
+        id = value;
     }
 
     public List<PathPoint> getPoints() {
