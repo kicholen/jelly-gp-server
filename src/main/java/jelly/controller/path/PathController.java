@@ -50,7 +50,7 @@ public class PathController {
         return service.update(path);
     }
 
-    Path getPathFromJson(String json) throws java.io.IOException {
+    Path getPathFromJson(String json) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(json, Path.class);
     }

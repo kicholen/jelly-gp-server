@@ -6,6 +6,10 @@
 <persistence-unit name="jellyeditor.persistence.unit">
     <class>jelly.entity.path.Path</class>
     <class>jelly.entity.path.PathPoint</class>
+    <class>jelly.entity.level.Level</class>
+    <class>jelly.entity.level.Enemy</class>
+    <class>jelly.entity.level.Wave</class>
+    <class>jelly.entity.level.Vector2</class>
     <properties>
         <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
         <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />

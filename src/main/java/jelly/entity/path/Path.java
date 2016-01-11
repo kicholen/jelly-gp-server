@@ -15,15 +15,10 @@ public class Path implements Serializable {
     @Id
     @GeneratedValue
     long id;
-
     String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<PathPoint> points = new ArrayList<PathPoint>();
-
-    public Path() {
-        super();
-    }
 
     public long getId() {
         return id;
@@ -41,7 +36,11 @@ public class Path implements Serializable {
         points = value;
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public void setName(String value) { name = value; }
+    public void setName(String value) {
+        name = value;
+    }
 }
