@@ -18,11 +18,13 @@ public class PathController {
     @Resource
     PathService service;
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/paths/{path}", method = RequestMethod.GET)
     public Path findById(@PathVariable("path") long pathId) throws PathNotFound {
         return service.findById(pathId);
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/paths", method = RequestMethod.GET)
     public List<Long> getAll() {
         return service.getAll()
@@ -30,6 +32,7 @@ public class PathController {
                 .collect(Collectors.toList());
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/paths/new/", method = RequestMethod.GET)
     public Path createPath() {
         Path path = new Path();
@@ -37,12 +40,14 @@ public class PathController {
         return path;
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/paths/delete/{path}", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     public void deletePath(@PathVariable("path") long pathId) throws PathNotFound {
         service.delete(pathId);
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/paths/update/", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     public Path updatePath(@RequestParam(value = "data", required = true) String pathJson) throws PathNotFound, IOException {

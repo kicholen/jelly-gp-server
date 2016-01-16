@@ -18,11 +18,13 @@ public class LevelController {
     @Resource
     LevelService service;
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/levels/{level}", method = RequestMethod.GET)
     public Level findById(@PathVariable("level") long levelId) throws LevelNotFound {
         return service.findById(levelId);
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/levels", method = RequestMethod.GET)
     public List<Long> getAll() {
         return service.getAll()
@@ -30,6 +32,7 @@ public class LevelController {
                 .collect(Collectors.toList());
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/levels/new/", method = RequestMethod.GET)
     public Level createLevel() {
         Level level = new Level();
@@ -37,12 +40,14 @@ public class LevelController {
         return level;
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/levels/delete/{level}", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     public void deleteLevel(@PathVariable("level") long levelId) throws LevelNotFound {
         service.delete(levelId);
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/levels/update/", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     public Level updatePath(@RequestParam(value = "data", required = true) String levelJson) throws LevelNotFound, IOException {
