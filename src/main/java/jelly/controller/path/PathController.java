@@ -26,10 +26,16 @@ public class PathController {
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/paths", method = RequestMethod.GET)
-    public List<Long> getAll() {
+    public List<Long> getAllIds() {
         return service.getAll()
                 .stream().map(Path::getId)
                 .collect(Collectors.toList());
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/paths/all", method = RequestMethod.GET)
+    public List<Path> getAll() {
+        return service.getAll();
     }
 
     @CrossOrigin(origins = "*")
