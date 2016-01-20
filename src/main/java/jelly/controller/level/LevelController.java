@@ -26,10 +26,16 @@ public class LevelController {
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/levels", method = RequestMethod.GET)
-    public List<Long> getAll() {
+    public List<Long> getAllIds() {
         return service.getAll()
                 .stream().map(Level::getId)
                 .collect(Collectors.toList());
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/levels/all", method = RequestMethod.GET)
+    public List<Level> getAll() {
+        return service.getAll();
     }
 
     @CrossOrigin(origins = "*")
