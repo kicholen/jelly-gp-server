@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 @RestController
 public class PathController {
@@ -26,10 +27,12 @@ public class PathController {
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/paths", method = RequestMethod.GET)
-    public List<Long> getAllIds() {
-        return service.getAll()
-                .stream().map(Path::getId)
-                .collect(Collectors.toList());
+    public Map<Long, String> getAllIds() {
+        Map<Long, String> map = new HashMap<Long, String>();
+        for (Path path : service.getAll()) {
+            map.put(path.getId(), path.getName());
+        }
+        return map;
     }
 
     @CrossOrigin(origins = "*")
@@ -42,6 +45,7 @@ public class PathController {
     @RequestMapping(value = "/paths/new/", method = RequestMethod.GET)
     public Path createPath() {
         Path path = new Path();
+        path.setName(getNextName());
         service.create(path);
         return path;
     }
@@ -64,5 +68,26 @@ public class PathController {
     Path getPathFromJson(String json) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(json, Path.class);
+    }
+
+    String getNextName() {
+        int name = 0;
+        for (Path path : service.getAll()) {
+            if (path.getName() == null) {
+                try {
+                    service.delete(path.getId());
+                }
+                catch (PathNotFound pathNotFound) {
+                    pathNotFound.printStackTrace();
+                }
+            }
+            else {
+                int value = Integer.parseInt(path.getName());
+                if (value > name) {
+                    name = value;
+                }
+            }
+        }
+        return String.valueOf(name + 1);
     }
 }

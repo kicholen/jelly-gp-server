@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 @RestController
 public class LevelController {
@@ -26,10 +27,12 @@ public class LevelController {
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/levels", method = RequestMethod.GET)
-    public List<Long> getAllIds() {
-        return service.getAll()
-                .stream().map(Level::getId)
-                .collect(Collectors.toList());
+    public Map<Long, String> getAllIds() {
+        Map<Long, String> map = new HashMap<Long, String>();
+        for (Level level : service.getAll()) {
+            map.put(level.getId(), level.getName());
+        }
+        return map;
     }
 
     @CrossOrigin(origins = "*")
