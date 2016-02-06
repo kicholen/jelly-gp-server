@@ -73,19 +73,9 @@ public class PathController {
     String getNextName() {
         int name = 0;
         for (Path path : service.getAll()) {
-            if (path.getName() == null) {
-                try {
-                    service.delete(path.getId());
-                }
-                catch (PathNotFound pathNotFound) {
-                    pathNotFound.printStackTrace();
-                }
-            }
-            else {
-                int value = Integer.parseInt(path.getName());
-                if (value > name) {
-                    name = value;
-                }
+            int value = Integer.parseInt(path.getName());
+            if (value > name) {
+                name = value;
             }
         }
         return String.valueOf(name + 1);
