@@ -43,6 +43,6 @@ public class PathServiceImpl implements PathService {
         Path path = entity.findOne(id);
         if (path == null)
             throw new PathNotFound();
-        return entity.findOne(id);
+        return path;
     }
 }

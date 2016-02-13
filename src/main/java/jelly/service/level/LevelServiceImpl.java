@@ -43,6 +43,6 @@ public class LevelServiceImpl implements LevelService {
         Level level = entity.findOne(id);
         if (level == null)
             throw new LevelNotFound();
-        return entity.findOne(id);
+        return level;
     }
 }

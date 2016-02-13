@@ -43,6 +43,6 @@ public class ShipServiceImpl implements ShipService {
         Ship ship = entity.findOne(id);
         if (ship == null)
             throw new ShipNotFound();
-        return entity.findOne(id);
+        return ship;
     }
 }
