@@ -13,6 +13,8 @@
     <class>jelly.entity.ship.Ship</class>
     <class>jelly.entity.difficulty.Difficulty</class>
     <class>jelly.entity.bonus.Bonus</class>
+    <class>jelly.entity.language.Language</class>
+    <class>jelly.entity.language.LanguageTranslation</class>
     <properties>
         <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
         <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
