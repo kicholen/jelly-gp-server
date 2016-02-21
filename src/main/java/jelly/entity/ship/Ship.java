@@ -37,6 +37,12 @@ public class Ship implements Serializable {
     float delay;
     float randomPositionOffsetX;
 
+    Boolean faceDirection;
+    @Column(nullable = true)
+    Integer shakeCamera;
+    @Column(nullable = true)
+    Float randomRotation;
+
     public long getId() {
         return id;
     }
@@ -179,6 +185,30 @@ public class Ship implements Serializable {
 
     public void setStartVelocity(Vector2 value) {
         startVelocity = value;
+    }
+
+    public Boolean getFaceDirection() {
+        return faceDirection;
+    }
+
+    public void setFaceDirection(Boolean faceDirection) {
+        this.faceDirection = faceDirection;
+    }
+
+    public int getShakeCamera() {
+        return shakeCamera;
+    }
+
+    public void setShakeCamera(Integer shakeCamera) {
+        this.shakeCamera = shakeCamera == null ? 0 : shakeCamera;
+    }
+
+    public float getRandomRotation() {
+        return randomRotation;
+    }
+
+    public void setRandomRotation(Float randomRotation) {
+        this.randomRotation = randomRotation == null ? 0 : randomRotation;
     }
 }
 

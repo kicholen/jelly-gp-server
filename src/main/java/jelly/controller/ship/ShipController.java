@@ -29,6 +29,7 @@ public class ShipController {
     @RequestMapping(value = "/ships", method = RequestMethod.GET)
     public Map<Long, Integer> getAllIds() {
         Map<Long, Integer> map = new HashMap<Long, Integer>();
+        updateSchema();
         for (Ship ship : service.getAll()) {
             map.put(ship.getId(), ship.getType());
         }
@@ -79,5 +80,22 @@ public class ShipController {
             }
         }
         return lastType + 1;
+    }
+
+    void updateSchema() {
+        int lastType = 0;
+        for (Ship ship : service.getAll()) {
+            ship.setFaceDirection(true);
+            ship.setRandomRotation(new Float(0));
+            ship.setShakeCamera(0);
+            try
+            {
+                service.update(ship);
+            }
+            catch (ShipNotFound exception)
+            {
+
+            }
+        }
     }
 }
