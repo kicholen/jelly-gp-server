@@ -37,11 +37,11 @@ public class Ship implements Serializable {
     float delay;
     float randomPositionOffsetX;
 
-    Boolean faceDirection;
+    Boolean faceDirection = false;
     @Column(nullable = true)
-    Integer shakeCamera;
+    Integer shakeCamera = 0;
     @Column(nullable = true)
-    Float randomRotation;
+    Float randomRotation = new Float(0);
 
     public long getId() {
         return id;
