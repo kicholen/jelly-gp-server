@@ -42,6 +42,7 @@ public class Ship implements Serializable {
     Integer shakeCamera = 0;
     @Column(nullable = true)
     Float randomRotation = new Float(0);
+    Integer score = 0;
 
     public long getId() {
         return id;
@@ -209,6 +210,14 @@ public class Ship implements Serializable {
 
     public void setRandomRotation(Float randomRotation) {
         this.randomRotation = randomRotation == null ? 0 : randomRotation;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score == null ? 0 : score;
     }
 }
 
