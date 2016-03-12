@@ -27,8 +27,7 @@ public class ShipController {
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/ships", method = RequestMethod.GET)
-    public Map<Long, Integer> getAllIds() throws ShipNotFound {
-        setScoreColumn();
+    public Map<Long, Integer> getAllIds() {
         Map<Long, Integer> map = new HashMap<Long, Integer>();
         for (Ship ship : service.getAll()) {
             map.put(ship.getId(), ship.getType());
@@ -80,12 +79,5 @@ public class ShipController {
             }
         }
         return lastType + 1;
-    }
-
-    void setScoreColumn() throws ShipNotFound {
-        for (Ship ship : service.getAll()) {
-            ship.setScore(1);
-            service.update(ship);
-        }
     }
 }
