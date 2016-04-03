@@ -14,6 +14,7 @@
     <class>jelly.entity.difficulty.Difficulty</class>
     <class>jelly.entity.bonus.Bonus</class>
     <class>jelly.entity.language.Language</class>
+    <class>jelly.entity.upgrade.ShipUpgrade</class>
     <class>jelly.entity.language.LanguageTranslation</class>
     <properties>
         <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
